@@ -613,8 +613,12 @@ def decode_tokens(tokenizer, token_array):
 
 
 def find_token_range(tokenizer, token_array, substring):
-    toks = decode_tokens(tokenizer, token_array)
-    whole_string = "".join(toks)
+    #toks, whole_string = None, None
+    try:
+        toks = decode_tokens(tokenizer, token_array)
+        whole_string = "".join(toks)
+    except:
+        print("find_token_range", '______', whole_string, '______', substring)
     char_loc = whole_string.index(substring)
     loc = 0
     tok_start, tok_end = None, None
