@@ -545,7 +545,7 @@ def plot_trace_heatmap(result, savepdf=None, title=None, xlabel=None, modelname=
         labels[i] = labels[i] + "*"
 
     with plt.rc_context(rc={"font.family": "Times New Roman"}):
-        fig, ax = plt.subplots(figsize=(7, 4), dpi=200)
+        fig, ax = plt.subplots(figsize=(3.5, 2), dpi=200)
         h = ax.pcolor(
             differences,
             cmap={None: "Purples", "None": "Purples", "mlp": "Greens", "attn": "Reds"}[
@@ -613,13 +613,9 @@ def decode_tokens(tokenizer, token_array):
 
 
 def find_token_range(tokenizer, token_array, substring):
-    char_loc = -99
-    try:
-        toks = decode_tokens(tokenizer, token_array)
-        whole_string = "".join(toks)
-        char_loc = whole_string.index(substring)
-    except:
-        print("find_token_range", '______', whole_string, '______', substring)
+    toks = decode_tokens(tokenizer, token_array)
+    whole_string = "".join(toks)
+    char_loc = whole_string.index(substring)
     loc = 0
     tok_start, tok_end = None, None
     for i, t in enumerate(toks):

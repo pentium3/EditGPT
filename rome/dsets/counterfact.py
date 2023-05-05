@@ -7,7 +7,7 @@ from torch.utils.data import Dataset
 
 from util.globals import *
 
-REMOTE_URL = f"{REMOTE_ROOT_URL}/data/dsets/counterfact.json"
+REMOTE_URL = f"{REMOTE_ROOT_URL}/data/dsets/counterfact_resmall.json"
 
 
 class CounterFactDataset(Dataset):
@@ -15,7 +15,7 @@ class CounterFactDataset(Dataset):
         self, data_dir: str, size: typing.Optional[int] = None, *args, **kwargs
     ):
         data_dir = Path(data_dir)
-        cf_loc = data_dir / "counterfact.json"
+        cf_loc = data_dir / "counterfact_resmall.json"
         if not cf_loc.exists():
             print(f"{cf_loc} does not exist. Downloading from {REMOTE_URL}")
             data_dir.mkdir(exist_ok=True, parents=True)
